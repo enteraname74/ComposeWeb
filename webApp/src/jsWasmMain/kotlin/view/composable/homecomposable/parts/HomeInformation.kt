@@ -6,9 +6,12 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import view.composable.AppImage
 import view.composable.CircleComposable
@@ -43,7 +46,7 @@ fun HomeInformation() {
                 Text(
                     text = HomeInformationText.MAIN_TEXT,
                     color = ColorUtils.onPrimary,
-                    fontSize = Constants.TextSize.body2
+                    fontSize = Constants.TextSize.body2,
                 )
                 Text(
                     text = HomeInformationText.SUB_TEXT,
@@ -52,7 +55,7 @@ fun HomeInformation() {
                 )
                 AppImage(
                     resource = "github.png",
-                    contentDescription = "repository",
+                    contentDescription = "Github profile",
                     size = Constants.ImageSize.medium2,
                     onClick = { uriHandler.openUri("https://github.com/enteraname74") }
                 )
@@ -62,8 +65,12 @@ fun HomeInformation() {
     }
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 private fun BoxScope.HomeInformationDesignElements() {
+
+    val maxWidth = LocalWindowInfo.current.containerSize.width
+
     Spacer(
         modifier = Modifier
             .width(5.dp)
@@ -74,14 +81,16 @@ private fun BoxScope.HomeInformationDesignElements() {
             )
             .align(Alignment.BottomEnd)
     )
-    Row(
-        modifier = Modifier
-            .align(Alignment.BottomStart),
-        verticalAlignment = Alignment.Bottom,
-        horizontalArrangement = Arrangement.spacedBy(Constants.Size.medium)
-    ) {
-        CircleComposable(size = Constants.Size.extraLarge)
-        CircleComposable(size = Constants.Size.large)
+    if (maxWidth > 500) {
+        Row(
+            modifier = Modifier
+                .align(Alignment.BottomStart),
+            verticalAlignment = Alignment.Bottom,
+            horizontalArrangement = Arrangement.spacedBy(Constants.Size.medium)
+        ) {
+            CircleComposable(size = Constants.Size.extraLarge)
+            CircleComposable(size = Constants.Size.large)
+        }
     }
 }
 

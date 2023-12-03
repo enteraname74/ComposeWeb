@@ -32,9 +32,10 @@ fun HomeTechnologies() {
                 )
 
                 LazyVerticalGrid(
-                    columns = GridCells.FixedSize(300.dp),
+                    modifier = Modifier.fillMaxWidth(),
+                    columns = GridCells.FixedSize(200.dp),
                     contentPadding = PaddingValues(Constants.Size.small),
-                    verticalArrangement = Arrangement.spacedBy(Constants.Size.medium),
+                    verticalArrangement = Arrangement.SpaceEvenly,
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
                     items(items = HomeTechnologiesElements.technologies) {
