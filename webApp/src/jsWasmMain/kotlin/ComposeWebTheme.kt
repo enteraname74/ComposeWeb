@@ -1,10 +1,15 @@
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ProvideTextStyle
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
+import org.jetbrains.compose.resources.resource
 
 object ComposeWebColors {
     val background = Color(0xFFFFFFFF)
@@ -21,7 +26,13 @@ fun ComposeWebTheme(content: @Composable () -> Unit) {
         )
     ) {
         ProvideTextStyle(LocalTextStyle.current.copy(letterSpacing = 0.sp)) {
-            content()
+            // The Surface composable seems to be necessary as the first element for the app to work properly
+            Surface(
+                modifier = Modifier
+                    .fillMaxSize()
+            ) {
+                content()
+            }
         }
     }
 }

@@ -7,6 +7,15 @@ plugins {
 
 val ktorVersion = extra["ktor.version"]
 
+val copyWasmResources = tasks.create("copyWasmResourcesWorkaround", Copy::class.java) {
+    from(project(":webApp").file("src/wasmJsMain/resources"))
+    into("build/processedResources/wasmJs/main")
+}
+
+afterEvaluate {
+    project.tasks.getByName("wasmJsProcessResources").finalizedBy(copyWasmResources)
+}
+
 kotlin {
     js(IR) {
         moduleName = "composeweb"
@@ -59,20 +68,6 @@ kotlin {
             dependencies {
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-client-js:$ktorVersion")
-
-                val voyagerVersion = "1.0.0-rc09"
-
-                // Navigator
-                implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
-
-                // BottomSheetNavigator
-                implementation("cafe.adriel.voyager:voyager-bottom-sheet-navigator:$voyagerVersion")
-
-                // TabNavigator
-                implementation("cafe.adriel.voyager:voyager-tab-navigator:$voyagerVersion")
-
-                // Transitions
-                implementation("cafe.adriel.voyager:voyager-transitions:$voyagerVersion")
             }
         }
         val wasmJsMain by getting {

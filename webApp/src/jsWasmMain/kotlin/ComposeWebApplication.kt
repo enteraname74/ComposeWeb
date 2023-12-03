@@ -1,36 +1,47 @@
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import view.composable.NavigationHost
+import model.navigation.NavigationController
+import model.navigation.Route
+import model.navigation.RoutesNames
+import model.navigation.Screen
+import view.screen.HomeScreen
+import view.screen.TestScreen
+
 @Composable
 internal fun ComposeWebApplication() {
-    ComposeWebTheme {
-        // The Surface composable seems to be necessary as the first element for the app to work properly
-        Surface(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(10.dp)
-        ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text("Hello world !")
-                Button(onClick = {
-                }) {
-                    Text("Click me !")
-                }
-            }
-        }
+    val navController = rememberSaveable {
+        NavigationController(
+            initialRoute = RoutesNames.HOME_PAGE
+        )
+    }
 
+    ComposeWebTheme {
+        NavigationHost(
+            navigationController = navController,
+            screens = arrayListOf(
+                Screen(
+                    screenRoute = Route(
+                        route = RoutesNames.HOME_PAGE
+                    ),
+                    screen = {
+                        HomeScreen(
+                            navigateToTestScreen = { navController.navigateTo(RoutesNames.TEST_PAGE) }
+                        )
+                    }
+                ),
+                Screen(
+                    screenRoute = Route(
+                        route = RoutesNames.TEST_PAGE
+                    ),
+                    screen = {
+                        TestScreen(
+                            navigateBack = { navController.navigateBack() }
+                        )
+                    }
+                )
+            )
+        )
     }
 }
