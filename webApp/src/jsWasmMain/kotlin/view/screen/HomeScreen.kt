@@ -2,7 +2,9 @@ package view.screen
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import view.composable.homecomposable.HomeScreenAppBar
@@ -19,13 +21,13 @@ fun HomeScreen(
 
     Scaffold(
         topBar = { HomeScreenAppBar(listState = listState) },
-        containerColor = ColorUtils.primary
+        containerColor = ColorUtils.primary,
     ) { padding ->
         HomeScreenList(
             listState = listState,
             modifier = Modifier
                 .padding(padding)
-                .padding(horizontal = Constants.Padding.extraLarge)
+                .padding(horizontal = Constants.Size.extraLarge)
         )
     }
 }

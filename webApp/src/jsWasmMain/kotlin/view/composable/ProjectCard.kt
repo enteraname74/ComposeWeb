@@ -33,8 +33,8 @@ fun ProjectCard(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(Constants.Padding.small),
-            verticalArrangement = Arrangement.spacedBy(Constants.Padding.medium)
+                .padding(Constants.Size.small),
+            verticalArrangement = Arrangement.spacedBy(Constants.Size.medium)
         ) {
             Text(
                 text = name,

@@ -1,9 +1,6 @@
 package view.composable.homecomposable
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -19,13 +16,14 @@ fun HomeElement(
     title: String,
     content: @Composable () -> Unit
 ) {
-    val maxHeight = LocalWindowInfo.current.containerSize.height
+    val maxHeight = LocalWindowInfo.current.containerSize.height.dp - 64.dp
 
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .height(maxHeight.dp),
-        verticalArrangement = Arrangement.spacedBy(Constants.Padding.large)
+            .height(maxHeight)
+            .padding(vertical = Constants.Size.medium),
+        verticalArrangement = Arrangement.spacedBy(Constants.Size.large)
     ) {
         Text(
             text = title,

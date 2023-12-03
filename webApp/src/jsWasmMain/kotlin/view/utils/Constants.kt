@@ -7,7 +7,7 @@ import androidx.compose.ui.unit.sp
  * Constants used for the application.
  */
 object Constants {
-    object Padding {
+    object Size {
         val small = 8.dp
         val medium = 16.dp
         val large = 32.dp

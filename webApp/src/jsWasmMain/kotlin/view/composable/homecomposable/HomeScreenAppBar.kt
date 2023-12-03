@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -28,9 +27,10 @@ fun HomeScreenAppBar(
         modifier = Modifier
             .fillMaxWidth()
             .background(color = ColorUtils.primary)
-            .padding(vertical = Constants.Padding.small, horizontal = Constants.Padding.medium),
+            .height(64.dp)
+            .padding(vertical = Constants.Size.small, horizontal = Constants.Size.medium),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(Constants.Padding.extraLarge)
+        horizontalArrangement = Arrangement.spacedBy(Constants.Size.extraLarge)
     ) {
         HeaderElement(
             title = "Home",

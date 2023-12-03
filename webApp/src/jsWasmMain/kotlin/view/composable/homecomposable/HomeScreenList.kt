@@ -16,7 +16,11 @@ fun HomeScreenList(
     LazyColumn(
         modifier = modifier,
         state = listState,
-        contentPadding = PaddingValues(Constants.Padding.large)
+        contentPadding = PaddingValues(
+            start = Constants.Size.large,
+            end = Constants.Size.large,
+        ),
+        verticalArrangement = Arrangement.spacedBy(Constants.Size.medium)
     ) {
         item {
             HomeInformation()
