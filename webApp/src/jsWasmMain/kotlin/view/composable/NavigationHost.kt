@@ -24,7 +24,7 @@ fun <T> NavigationHost(
         if (screens.isEmpty()) {
             DefaultNavigationView()
         } else {
-            val screen = (screens.find { it.screenRoute.route == currentRoute } ?: screens.first()).screen
+            val screen = (screens.find { it.screenRoute == currentRoute.route } ?: screens.first()).screen
             screen()
         }
     }

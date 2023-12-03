@@ -21,8 +21,6 @@ import view.utils.HomeElementsPosition
 fun HomeScreenAppBar(
     listState: LazyListState
 ) {
-    val coroutineScope = rememberCoroutineScope()
-
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -30,33 +28,33 @@ fun HomeScreenAppBar(
             .height(64.dp)
             .padding(vertical = Constants.Size.small, horizontal = Constants.Size.medium),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(Constants.Size.extraLarge)
+        horizontalArrangement = Arrangement.End
     ) {
-        HeaderElement(
-            title = "Home",
-            listState = listState,
-            elementPosition = HomeElementsPosition.HOME
-        )
-        HeaderElement(
-            title = "Description",
-            listState = listState,
-            elementPosition = HomeElementsPosition.DESCRIPTION
-        )
-        HeaderElement(
-            title = "Technologies",
-            listState = listState,
-            elementPosition = HomeElementsPosition.TECHNOLOGIES
-        )
-        HeaderElement(
-            title = "Projects",
-            listState = listState,
-            elementPosition = HomeElementsPosition.PROJECTS
-        )
-        HeaderElement(
-            title = "About",
-            listState = listState,
-            elementPosition = HomeElementsPosition.ABOUT
-        )
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(Constants.Size.large)
+        ) {
+            HeaderElement(
+                title = "Home",
+                listState = listState,
+                elementPosition = HomeElementsPosition.HOME
+            )
+            HeaderElement(
+                title = "Technologies",
+                listState = listState,
+                elementPosition = HomeElementsPosition.TECHNOLOGIES
+            )
+            HeaderElement(
+                title = "Projects",
+                listState = listState,
+                elementPosition = HomeElementsPosition.PROJECTS
+            )
+            HeaderElement(
+                title = "About",
+                listState = listState,
+                elementPosition = HomeElementsPosition.ABOUT
+            )
+        }
     }
 }
 
@@ -67,7 +65,7 @@ private fun HeaderElement(
     listState: LazyListState
 ) {
     val coroutineScope = rememberCoroutineScope()
-    val isSelected = listState.firstVisibleItemIndex == elementPosition
+    val isSelected = (listState.firstVisibleItemIndex == elementPosition) || (listState.firstVisibleItemIndex == elementPosition + 1)
 
     TextButton(
         onClick = {
@@ -79,7 +77,7 @@ private fun HeaderElement(
         ) {
             Text(
                 text = title,
-                color = ColorUtils.onPrimary,
+                color = if (isSelected) ColorUtils.highlight else ColorUtils.onPrimary,
                 fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis

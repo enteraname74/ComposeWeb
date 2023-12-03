@@ -6,11 +6,11 @@ import androidx.compose.runtime.mutableStateListOf
  * Used to navigate between multiples elements
  */
 class NavigationController<T>(
-    initialRoute: T
+    initialRoute: Route<T>
 ) {
     private val navigationStack = mutableStateListOf(initialRoute)
 
-    val currentRoute: T
+    val currentRoute: Route<T>
         get() = navigationStack.last()
 
     /**
@@ -27,7 +27,7 @@ class NavigationController<T>(
      * Navigate to a given route.
      * Does nothing if the given route is not found.
      */
-    fun navigateTo(route: T) {
+    fun navigateTo(route: Route<T>) {
         println("WIll navigate to :$route")
         navigationStack.add(route)
         println("stack size : ${navigationStack.size}")

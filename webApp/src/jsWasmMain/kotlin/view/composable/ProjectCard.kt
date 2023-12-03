@@ -1,20 +1,23 @@
 package view.composable
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import model.Project
 import view.utils.ColorUtils
 import view.utils.Constants
 
 @Composable
 fun ProjectCard(
-    name: String,
-    description: String,
-    tags: List<String> = emptyList(),
+    project: Project,
     onClick: () -> Unit
 ) {
     Card(
@@ -25,46 +28,48 @@ fun ProjectCard(
             .size(
                 width = 500.dp,
                 height = 250.dp
-            ),
+            )
+            .clickable { onClick() },
         colors = CardDefaults.cardColors(
-            containerColor = ColorUtils.primary
+            containerColor = ColorUtils.secondary
         )
     ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(Constants.Size.small),
+                .padding(Constants.Size.medium),
             verticalArrangement = Arrangement.spacedBy(Constants.Size.medium)
         ) {
             Text(
-                text = name,
-                color = ColorUtils.onPrimary,
+                text = project.title,
+                color = ColorUtils.onSecondary,
                 fontSize = Constants.TextSize.body1,
                 maxLines = 1,
+                fontWeight = FontWeight.Bold,
                 overflow = TextOverflow.Ellipsis
             )
             Text(
-                text = description,
-                color = ColorUtils.onPrimary,
+                text = project.description,
+                color = ColorUtils.onSecondary,
                 fontSize = Constants.TextSize.body2,
                 maxLines = 3,
                 overflow = TextOverflow.Ellipsis
             )
             Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.BottomEnd
+                modifier = Modifier
+                    .fillMaxSize(),
+                contentAlignment = Alignment.BottomStart
             ) {
-                Button(
-                    onClick = onClick,
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = ColorUtils.secondary
-                    )
+                LazyRow(
+                    horizontalArrangement = Arrangement.spacedBy(Constants.Size.small)
                 ) {
-                    Text(
-                        text =  "See more",
-                        color = ColorUtils.onSecondary,
-                        fontSize = Constants.TextSize.body2,
-                    )
+                    items(items = project.technologiesImages) {
+                        AppImage(
+                            resource = it,
+                            contentDescription = "",
+                            size = Constants.ImageSize.medium2
+                        )
+                    }
                 }
             }
         }

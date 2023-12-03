@@ -8,5 +8,7 @@ import androidx.compose.ui.graphics.Color
 data class Palette(
     val primary: Color,
     val secondary: Color,
-    val textColor: Color = Color.White
+    val onPrimary: Color = Color.White,
+    val onSecondary: Color = Color.White,
+    val highlight: Color = Color.White
 )

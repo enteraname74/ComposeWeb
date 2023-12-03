@@ -23,14 +23,6 @@ Check out the repo, navigate to the project folder, and use the following comman
 
 `./gradlew :webApp:wasmJsRun`
 
-### Run Desktop version via Gradle
-
-`./gradlew :desktopApp:run`
-
-### Install Android application via Gradle
-
-`./gradlew :androidApp:installDebug`
-
 ## Setup Environment
 
 To run applications built with Kotlin/Wasm in a browser, you need a browser supporting [wasm garbage collection feature](https://github.com/WebAssembly/gc):

@@ -16,53 +16,84 @@ object ColorUtils {
 
     val primary: Color
         @Composable
-        get() = animateColorAsState(targetValue = getPalette().primary, animationSpec = tween(300)).value
+        get() = animateColorAsState(
+            targetValue = getPalette().primary,
+            animationSpec = tween(Constants.AnimationDuration.normal)
+        ).value
 
     val secondary: Color
         @Composable
-        get() = animateColorAsState(targetValue = getPalette().secondary, animationSpec = tween(300)).value
+        get() = animateColorAsState(
+            targetValue = getPalette().secondary,
+            animationSpec = tween(Constants.AnimationDuration.normal)
+        ).value
 
     val onPrimary: Color
         @Composable
-        get() = animateColorAsState(targetValue = getPalette().textColor, animationSpec = tween(300)).value
+        get() = animateColorAsState(
+            targetValue = getPalette().onPrimary,
+            animationSpec = tween(Constants.AnimationDuration.normal)
+        ).value
 
     val onSecondary: Color
         @Composable
-        get() = animateColorAsState(targetValue = getPalette().textColor, animationSpec = tween(300)).value
+        get() = animateColorAsState(
+            targetValue = getPalette().onSecondary,
+            animationSpec = tween(Constants.AnimationDuration.normal)
+        ).value
+
+    val highlight: Color
+        @Composable
+        get() = animateColorAsState(
+            targetValue = getPalette().highlight,
+            animationSpec = tween(Constants.AnimationDuration.normal)
+        ).value
 
     /**
      * Retrieve the palette to use for the application.
      */
     private fun getPalette(): Palette {
-        return when(currentShownElement) {
-            HomeElementsPosition.HOME -> HOME_PALETTE
-            HomeElementsPosition.DESCRIPTION -> DESCRIPTION_PALETTE
-            HomeElementsPosition.TECHNOLOGIES -> TECHNOLOGIES_PALETTE
-            HomeElementsPosition.PROJECTS -> PROJECTS_PALETTE
-            HomeElementsPosition.ABOUT -> ABOUT_PALETTE
+        println(currentShownElement)
+        return when (currentShownElement) {
+            HomeElementsPosition.HOME, 1 -> HOME_PALETTE
+            HomeElementsPosition.TECHNOLOGIES, 3 -> TECHNOLOGIES_PALETTE
+            HomeElementsPosition.PROJECTS, 5 -> PROJECTS_PALETTE
+            HomeElementsPosition.ABOUT, 7 -> ABOUT_PALETTE
             else -> HOME_PALETTE
         }
     }
 
     private val HOME_PALETTE = Palette(
         primary = Color(0xff1c3c60),
-        secondary = Color(0xff2c6099)
+        secondary = Color(0xff2c6099),
+        highlight = Color(0xffDBE0E5),
+        onPrimary = Color(0xff8294A8),
+        onSecondary = Color(0xffAFBED5)
     )
-    private val DESCRIPTION_PALETTE = Palette(
+    private val CV_PALETTE = Palette(
         primary = Color(0xff480000),
         secondary = Color(0xff730000)
     )
     private val TECHNOLOGIES_PALETTE = Palette(
         primary = Color(0xff084038),
-        secondary = Color(0xff0c6659)
+        secondary = Color(0xff0c6659),
+        onPrimary = Color(0xff9CB3AF),
+        highlight = Color(0xffD7E1DF),
+        onSecondary = Color(0xff9EC2BD)
     )
     private val PROJECTS_PALETTE = Palette(
         primary = Color(0xff643004),
-        secondary = Color(0xffa04c06)
-    )
-    private val ABOUT_PALETTE = Palette(
-        primary = Color(0xff1c3c60),
-        secondary = Color(0xff2c6099)
+        secondary = Color(0xffa04c06),
+        onPrimary = Color(0xffC1AC9B),
+        highlight = Color(0xffE6DED7),
+        onSecondary = Color(0xffD9B79B)
     )
 
+    private val ABOUT_PALETTE = Palette(
+        primary = Color(0xff480000),
+        secondary = Color(0xff730000),
+        onPrimary = Color(0xffB69999),
+        highlight = Color(0xffE2D6D6),
+        onSecondary = Color(0xffC79999)
+    )
 }
