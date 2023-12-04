@@ -1,4 +1,4 @@
-package view.composable.homecomposable
+package view.composable.home
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -10,13 +10,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import model.Project
-import view.composable.homecomposable.parts.HomeAbout
-import view.composable.homecomposable.parts.HomeInformation
-import view.composable.homecomposable.parts.HomeProjects
-import view.composable.homecomposable.parts.HomeTechnologies
+import view.composable.home.parts.HomeAbout
+import view.composable.home.parts.HomeInformation
+import view.composable.home.parts.HomeProjects
+import view.composable.home.parts.HomeTechnologies
 import view.utils.ColorUtils
 import view.utils.Constants
 

@@ -42,7 +42,7 @@ fun ProjectCard(
         ) {
             Text(
                 text = project.title,
-                color = ColorUtils.onSecondary,
+                color = ColorUtils.highlight,
                 fontSize = Constants.TextSize.body1,
                 maxLines = 1,
                 fontWeight = FontWeight.Bold,

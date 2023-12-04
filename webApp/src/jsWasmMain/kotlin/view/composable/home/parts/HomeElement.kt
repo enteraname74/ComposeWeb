@@ -1,4 +1,4 @@
-package view.composable.homecomposable.parts
+package view.composable.home.parts
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.*

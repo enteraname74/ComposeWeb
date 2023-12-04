@@ -1,4 +1,4 @@
-import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.LocalTextStyle
@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
-import org.jetbrains.compose.resources.resource
+import view.utils.ColorUtils
 
 object ComposeWebColors {
     val background = Color(0xFFFFFFFF)
@@ -30,6 +30,9 @@ fun ComposeWebTheme(content: @Composable () -> Unit) {
             Surface(
                 modifier = Modifier
                     .fillMaxSize()
+                    .background(
+                        color = ColorUtils.primary
+                    )
             ) {
                 content()
             }

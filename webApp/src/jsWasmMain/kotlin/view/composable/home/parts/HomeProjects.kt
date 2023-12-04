@@ -1,4 +1,4 @@
-package view.composable.homecomposable.parts
+package view.composable.home.parts
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import model.ApplicationData
 import model.Project
 import view.composable.ProjectCard
 import view.utils.ColorUtils
@@ -38,7 +39,7 @@ fun HomeProjects(
                     verticalArrangement = Arrangement.spacedBy(Constants.Size.medium),
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
-                    items(items = HomeProjectsElements.projects) {
+                    items(items = ApplicationData.projects) {
                         ProjectCard(
                             project = it,
                             onClick = { navigateToProjectScreen(it) }
@@ -52,37 +53,4 @@ fun HomeProjects(
 
 private object HomeProjectsText {
     const val CURRENTLY = "Here is some projects that I have made (solo or with friends):"
-}
-
-
-private object HomeProjectsElements {
-    val projects: List<Project> = listOf(
-        Project(
-            title = "Soul Searching",
-            description = "An offline music application for Android 8 and above, with Jetpack Compose.",
-            technologiesImages = listOf("kotlin.png","compose.png"),
-            projectRepositoryUrl = "https://github.com/enteraname74/SoulSearching"
-        ),
-        Project(
-            title = "Bagit Desktop",
-            description = "A Desktop application for managing Git projects.",
-            technologiesImages = listOf("rust.png","gtk.png", "libadwaita.png")
-        ),
-        Project(
-            title = "Sweet Music",
-            description = "An offline music application for Android 8 and above.",
-            technologiesImages = listOf("kotlin.png"),
-            projectRepositoryUrl = "https://github.com/enteraname74/SweetMusic"
-        ),
-        Project(
-            title = "USMD BACK",
-            description = "A server application, made for testing Ktor.",
-            technologiesImages = listOf("kotlin.png", "ktor.png")
-        ),
-        Project(
-            title = "Compose Web",
-            description = "A web app, made for testing Compose for Web.",
-            technologiesImages = listOf("kotlin.png","compose.png")
-        )
-    )
 }

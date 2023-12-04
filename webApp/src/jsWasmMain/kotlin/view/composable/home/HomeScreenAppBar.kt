@@ -1,4 +1,4 @@
-package view.composable.homecomposable
+package view.composable.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -16,11 +16,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import view.utils.ColorUtils
 import view.utils.Constants

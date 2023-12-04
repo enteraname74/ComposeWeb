@@ -1,4 +1,4 @@
-package view.composable.homecomposable
+package view.composable.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

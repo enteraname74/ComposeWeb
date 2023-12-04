@@ -1,3 +1,4 @@
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.saveable.rememberSaveable
 import model.Project
@@ -11,6 +12,7 @@ import view.screen.ProjectScreen
 
 @Composable
 internal fun ComposeWebApplication() {
+    val listState = rememberLazyListState()
     val navController = rememberSaveable {
         NavigationController(
             initialRoute = Route(
@@ -34,7 +36,8 @@ internal fun ComposeWebApplication() {
                                         arguments = mapOf("project" to it)
                                     )
                                 )
-                            }
+                            },
+                            listState = listState
                         )
                     }
                 ),

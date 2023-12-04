@@ -1,4 +1,4 @@
-package view.composable.homecomposable.parts
+package view.composable.home.parts
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -11,7 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import view.composable.AppImage
 import view.composable.CircleComposable

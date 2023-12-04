@@ -1,6 +1,7 @@
 package view.screen
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.DrawerValue
@@ -10,19 +11,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalWindowInfo
-import androidx.compose.ui.unit.dp
 import model.Project
-import view.composable.homecomposable.HomeDrawer
-import view.composable.homecomposable.HomeScreenAppBar
-import view.composable.homecomposable.HomeScreenList
+import view.composable.home.HomeDrawer
+import view.composable.home.HomeScreenAppBar
+import view.composable.home.HomeScreenList
 import view.utils.ColorUtils
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun HomeScreen(
-    navigateToProjectScreen: (Project) -> Unit
+    navigateToProjectScreen: (Project) -> Unit,
+    listState: LazyListState
 ) {
-    val listState = rememberLazyListState()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val isMinimised = LocalWindowInfo.current.containerSize.width <= 600
     ColorUtils.currentShownElement = listState.firstVisibleItemIndex
